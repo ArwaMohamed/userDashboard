@@ -40,7 +40,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 - NgRx (for state management)
 - RxJS
 - TypeScript
-- HTML/CSS
+- HTML/sCSS
 
 ## Usage
 
@@ -54,6 +54,3 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Contributions are welcome! If you have any suggestions or find any issues, feel free to create a pull request or submit an issue.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for deta
