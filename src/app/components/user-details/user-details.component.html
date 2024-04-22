@@ -1,0 +1,21 @@
+<div *ngIf="user" >
+    <mat-card class="data">
+      <mat-card-header>
+        <mat-card-title>{{ user.first_name }} {{ user?.last_name }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="user?.avatar" [alt]="user?.first_name" class="w-25">
+      <mat-card-content>
+        <p>Email: {{ user?.email }}</p>
+        <p>User ID: {{ user?.id }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+<ng-template #loadingOrError>
+  <div *ngIf="(error$ | async) as error">
+    <p>Error: {{ error }}</p>
+  </div>
+  <div *ngIf="(user$ | async) === null">
+    <p>Loading user details...</p>
+  </div>
+</ng-template>

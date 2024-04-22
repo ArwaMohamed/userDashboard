@@ -1,5 +1,8 @@
-<div class="container" *ngFor="let userList of users$ | async |keyvalue">
-  <mat-card class="example-card" *ngFor="let user of userList.value">
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate" class="loading"></mat-progress-bar>
+
+
+  <app-header></app-header>
+  <mat-card class="example-card" *ngFor="let user of userList" (click)="getUserDetails(user?.id)">
     <mat-card-header>
       <mat-card-title-group>
         <mat-card-title>{{user?.first_name}} {{user?.last_name}}</mat-card-title>
@@ -10,6 +13,5 @@
       {{user?.email}}
     </mat-card-content>
   </mat-card>
-</div>
 <mat-paginator [length]="totalUsersCount" [pageSize]="pageSize" (page)="onPageChanged($event)"></mat-paginator>
 

@@ -6,4 +6,12 @@
   margin-top: 2%;
   margin-bottom: 1%;
   width: 50%;
+  &:hover{
+    box-shadow: 1px 8px 20px grey;
+    transition:  box-shadow .6s ease-in;
+    cursor: pointer;
+  }
+}
+.loading{
+  position: fixed;
 }
