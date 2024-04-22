@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { loadUser } from 'src/app/store/actions';
+import { loadUser, resetSelectedUser } from 'src/app/store/actions';
 import { UserState } from 'src/app/store/redusers';
 
 @Component({
@@ -15,12 +15,13 @@ export class UserDetailsComponent {
   error$!: Observable<any>;
   user:any
   constructor(
-    private route: ActivatedRoute,
-    private store: Store<UserState>
+    private acRoute: ActivatedRoute,
+    private store: Store<UserState>,
+    private route:Router
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.acRoute.params.subscribe(params => {
       const userId = +params['id']; // Convert userId to number
       this.store.dispatch(loadUser({ userId }));
     });
@@ -31,5 +32,8 @@ export class UserDetailsComponent {
     })
     this.error$ = this.store.pipe(select(state => state.error));
   }
-
+  goBack(): void {
+    this.store.dispatch(resetSelectedUser());
+    this.route.navigate(['./users-list' ])
+  }
 }

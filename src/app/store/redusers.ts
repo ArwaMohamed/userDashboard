@@ -27,6 +27,10 @@ export const userReducer = createReducer(
     users: [], // Reset users array
     error: null
   })),
+  on(UserActions.resetSelectedUser, (state) => ({
+    ...state,
+    selectedUser:null
+  })),
   on(UserActions.loadUsersSuccess, (state, { users, per_page, total }) => ({
     ...state,
     users: [...state.users, ...users],
